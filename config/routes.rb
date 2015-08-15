@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   end
   root 'posts#index'
 
+  get '/about', to: 'pages#about'
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
