@@ -1,13 +1,24 @@
 <div id="page_wrapper">
-<h2>New Post</h2>
+  <h2>New Post</h2>
 
-<%= form_for :post, url: posts_path do |f| %>
-  <%= f.label :title %><br>
-  <%= f.text_field :title %><br>
-  <br>
-  <%= f.label :body %><br>
-  <%= f.text_field :body %><br>
-  <br>
-  <%= f.submit %>
-<% end %>
+  <%= form_for :post, url: posts_path do |f| %>
+    <% if @post.errors.any? %>
+      <div id="errors">
+        <h1><%= pluralize(@post.errors.count, "error") %> prevented
+                                        this post from saving:</h1>
+        <ul>
+          <% @post.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %><br>
+    <br>
+    <%= f.label :body %><br>
+    <%= f.text_field :body %><br>
+    <br>
+    <%= f.submit %>
+  <% end %>
 </div>
